@@ -8,9 +8,9 @@ namespace ConsoleApplication1
 {
     class Triangle
     {
-        Point a;
-        Point b;
-        Point c;
+       public Point a;
+       public Point b;
+       public Point c;
 
 
         Edge u;
@@ -22,9 +22,25 @@ namespace ConsoleApplication1
             this.a = a;
             this.b = b;
             this.c = c;
+
             this.u = new Edge(a, b);
             this.v = new Edge(b, c);
             this.w = new Edge(c, a);
+
+            try
+            {
+                if (!(((v.Length + u.Length) > w.Length) &&
+                    ((w.Length + u.Length) > v.Length) &&
+                    ((v.Length + w.Length) > u.Length)))
+                {
+                    throw new Exception(string.Format("Triangle not exist!"));
+                }
+            }
+            catch
+            {
+                //Console.WriteLine("Triangle ({0}:{1}) ({2}:{3}) ({4}:{5}) not exist! Check input data.", a.X, a.Y, b.X, b.Y, c.X, c.Y);
+                //Environment.Exit(0);
+            }
         }
         
         public double Perimetr
@@ -47,49 +63,18 @@ namespace ConsoleApplication1
         {
             get
             {
-                bool Check;
-                if ((Math.Pow(u.Length, 2) + Math.Pow(v.Length, 2) == Math.Pow(w.Length, 2)) ||
-                    (Math.Pow(w.Length, 2) + Math.Pow(u.Length, 2) == Math.Pow(v.Length, 2)) || 
-                    (Math.Pow(w.Length, 2) + Math.Pow(v.Length, 2) == Math.Pow(u.Length, 2)))
-                {
-                    Check = true;
-                }
-               
-                    else Check = false;
-               
-                return Check;
+                return (Math.Pow(u.Length, 2) + Math.Pow(v.Length, 2) == Math.Pow(w.Length, 2)) ||
+                       (Math.Pow(w.Length, 2) + Math.Pow(u.Length, 2) == Math.Pow(v.Length, 2)) ||
+                       (Math.Pow(w.Length, 2) + Math.Pow(v.Length, 2) == Math.Pow(u.Length, 2));
             }
         }
         public bool Isosceles
         {
             get
             {
-                bool Check; 
-                if ((u.Length == v.Length && u.Length != w.Length)||
-                    (u.Length == w.Length && u.Length != v.Length)||
-                    (w.Length == v.Length && w.Length != u.Length))
-                {
-                    Check = true;
-                }
-                
-                    else Check = false;
-                
-                return Check;
-            }
-        }
-        public bool Ibi
-        {
-            get
-            {
-                bool check; 
-                if (((v.Length + u.Length)>w.Length)|| ((w.Length + u.Length) > v.Length)|| ((v.Length + w.Length) > u.Length))
-                {
-                    check = true;
-                }
-                
-                    else check = false;
-                
-                return check;
+                return ((u.Length == v.Length && u.Length != w.Length) ||
+                        (u.Length == w.Length && u.Length != v.Length) ||
+                        (w.Length == v.Length && w.Length != u.Length));
             }
         }
 

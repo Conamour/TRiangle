@@ -8,8 +8,8 @@ namespace ConsoleApplication1
 {
     class Edge
     {
-        Point a;
-        Point b; 
+        public Point a;
+        public Point b; 
     public Edge (Point a, Point b)
         {
             this.a = a;
