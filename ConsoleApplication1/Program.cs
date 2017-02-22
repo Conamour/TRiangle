@@ -25,6 +25,7 @@ namespace ConsoleApplication1
 
 
             Triangle[] triangleNode = new Triangle[]
+<<<<<<< HEAD
             {
             new Triangle(x1, y1, z1),
             new Triangle(x2, y2, z2),
@@ -35,8 +36,15 @@ namespace ConsoleApplication1
 
             /*
             for (int i = 0; i < 4; i++)
+=======
+>>>>>>> origin/Fixed
             {
+            new Triangle(x1, y1, z1),
+            new Triangle(x2, y2, z2),
+            new Triangle(x3, y3, z3),
+            new Triangle(x3, x3, z3)
 
+<<<<<<< HEAD
                 if (!triangleNode[i].Ibi)
                 {
                     Console.WriteLine("Triangle {0} not exist! Check input data.", i);
@@ -44,7 +52,11 @@ namespace ConsoleApplication1
                 }
             }
             */
+=======
+         };
+>>>>>>> origin/Fixed
 
+          
             double avgPerimetr = 0;
             double avgArea = 0;
 

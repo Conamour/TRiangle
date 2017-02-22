@@ -27,6 +27,7 @@ namespace ConsoleApplication1
             this.v = new Edge(b, c);
             this.w = new Edge(c, a);
 
+<<<<<<< HEAD
             try
             {
                 if (!(((v.Length + u.Length) > w.Length) &&
@@ -40,6 +41,11 @@ namespace ConsoleApplication1
             {
                 //Console.WriteLine("Triangle ({0}:{1}) ({2}:{3}) ({4}:{5}) not exist! Check input data.", a.X, a.Y, b.X, b.Y, c.X, c.Y);
                 //Environment.Exit(0);
+=======
+            if (!((u.Length + v.Length > w.Length) && (u.Length + w.Length > v.Length) && (v.Length + w.Length > u.Length)))
+            {
+                throw new ArgumentException();
+>>>>>>> origin/Fixed
             }
         }
         
@@ -76,6 +82,18 @@ namespace ConsoleApplication1
                         (u.Length == w.Length && u.Length != v.Length) ||
                         (w.Length == v.Length && w.Length != u.Length));
             }
+<<<<<<< HEAD
+=======
+        }
+        public static bool operator ==(Triangle t1, Triangle t2)
+        {
+            return ((t1.a == t2.a) && (t1.b == t2.b) && (t1.c == t2.c));
+        }
+
+        public static bool operator !=(Triangle t1, Triangle t2)
+        {
+            return (!((t1.a == t2.a) && (t1.b == t2.b) && (t1.c == t2.c)));
+>>>>>>> origin/Fixed
         }
 
     }  

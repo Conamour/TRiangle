@@ -22,6 +22,14 @@ namespace ConsoleApplication1
                 return Math.Sqrt(Math.Pow((b.X - a.X), 2) + Math.Pow((b.Y - a.Y), 2));
             }
         }
-       
+        public static bool operator ==(Edge v, Edge w)
+        {
+            return w.Length == v.Length;
+        }
+
+        public static bool operator !=(Edge v, Edge w)
+        {
+            return !(w.Length == v.Length);
+        }
     }
 }
