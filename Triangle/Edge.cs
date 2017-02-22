@@ -9,19 +9,22 @@ namespace ConsoleApplication1
     class Edge
     {
         public Point a;
-        public Point b; 
-    public Edge (Point a, Point b)
+        public Point b;
+
+        public Edge(Point a, Point b)
         {
             this.a = a;
             this.b = b;
         }
-    public double Length
+
+        public double Length
         {
-            get 
+            get
             {
                 return Math.Sqrt(Math.Pow((b.X - a.X), 2) + Math.Pow((b.Y - a.Y), 2));
             }
         }
+
         public static bool operator ==(Edge v, Edge w)
         {
             return w.Length == v.Length;
