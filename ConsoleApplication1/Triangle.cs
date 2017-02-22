@@ -8,9 +8,9 @@ namespace ConsoleApplication1
 {
     class Triangle
     {
-        Point a;
-        Point b;
-        Point c;
+       public Point a;
+       public Point b;
+       public Point c;
 
 
         Edge u;
@@ -22,9 +22,15 @@ namespace ConsoleApplication1
             this.a = a;
             this.b = b;
             this.c = c;
+
             this.u = new Edge(a, b);
             this.v = new Edge(b, c);
             this.w = new Edge(c, a);
+
+            if (!((u.Length + v.Length > w.Length) && (u.Length + w.Length > v.Length) && (v.Length + w.Length > u.Length)))
+            {
+                throw new ArgumentException();
+            }
         }
         
         public double Perimetr
@@ -47,50 +53,28 @@ namespace ConsoleApplication1
         {
             get
             {
-                bool Check;
-                if ((Math.Pow(u.Length, 2) + Math.Pow(v.Length, 2) == Math.Pow(w.Length, 2)) ||
-                    (Math.Pow(w.Length, 2) + Math.Pow(u.Length, 2) == Math.Pow(v.Length, 2)) || 
-                    (Math.Pow(w.Length, 2) + Math.Pow(v.Length, 2) == Math.Pow(u.Length, 2)))
-                {
-                    Check = true;
-                }
-               
-                    else Check = false;
-               
-                return Check;
+                return (Math.Pow(u.Length, 2) + Math.Pow(v.Length, 2) == Math.Pow(w.Length, 2)) ||
+                       (Math.Pow(w.Length, 2) + Math.Pow(u.Length, 2) == Math.Pow(v.Length, 2)) ||
+                       (Math.Pow(w.Length, 2) + Math.Pow(v.Length, 2) == Math.Pow(u.Length, 2));
             }
         }
         public bool Isosceles
         {
             get
             {
-                bool Check; 
-                if ((u.Length == v.Length && u.Length != w.Length)||
-                    (u.Length == w.Length && u.Length != v.Length)||
-                    (w.Length == v.Length && w.Length != u.Length))
-                {
-                    Check = true;
-                }
-                
-                    else Check = false;
-                
-                return Check;
+                return ((u.Length == v.Length && u.Length != w.Length) ||
+                        (u.Length == w.Length && u.Length != v.Length) ||
+                        (w.Length == v.Length && w.Length != u.Length));
             }
         }
-        public bool Ibi
+        public static bool operator ==(Triangle t1, Triangle t2)
         {
-            get
-            {
-                bool check; 
-                if (((v.Length + u.Length)>w.Length)|| ((w.Length + u.Length) > v.Length)|| ((v.Length + w.Length) > u.Length))
-                {
-                    check = true;
-                }
-                
-                    else check = false;
-                
-                return check;
-            }
+            return ((t1.a == t2.a) && (t1.b == t2.b) && (t1.c == t2.c));
+        }
+
+        public static bool operator !=(Triangle t1, Triangle t2)
+        {
+            return (!((t1.a == t2.a) && (t1.b == t2.b) && (t1.c == t2.c)));
         }
 
     }  

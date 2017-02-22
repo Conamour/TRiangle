@@ -8,8 +8,8 @@ namespace ConsoleApplication1
 {
     class Edge
     {
-        Point a;
-        Point b; 
+        public Point a;
+        public Point b; 
     public Edge (Point a, Point b)
         {
             this.a = a;
@@ -22,6 +22,14 @@ namespace ConsoleApplication1
                 return Math.Sqrt(Math.Pow((b.X - a.X), 2) + Math.Pow((b.Y - a.Y), 2));
             }
         }
-       
+        public static bool operator ==(Edge v, Edge w)
+        {
+            return w.Length == v.Length;
+        }
+
+        public static bool operator !=(Edge v, Edge w)
+        {
+            return !(w.Length == v.Length);
+        }
     }
 }
